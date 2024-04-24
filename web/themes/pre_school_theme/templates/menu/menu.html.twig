@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link URL, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+#}
+ {{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+            <a href="index.html" class="navbar-brand">
+                <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  {% import _self as menus %}
+  {% if items %}
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    {% if menu_level == 0 %}
+      <div class="navbar-nav mx-auto">
+    {% for item in items %}
+
+      <a href="{{item.url}}" class="nav-item nav-link {% if loop.first %}active {% endif %}">{{item.title}}</a>
+        {% if item.below %}
+         <div class="nav-item dropdown">
+        <a href="{{item.url}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{item.title}}</a>
+          {{ menus.menu_sub_links(item.below, attributes, menu_level + 1) }}
+          </div>
+        {% endif %}
+      
+    {% endfor %}
+    </div>
+     {% endif %}
+    </div>
+  {% endif %}
+  </nav>
+{% endmacro %} 
+{% macro menu_sub_links(items, attributes, menu_level) %}
+{% if items %}
+<div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+{% for item in items %}
+  <a href="{{item.url}}" class="dropdown-item">{{item.title}}</a>
+{% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+

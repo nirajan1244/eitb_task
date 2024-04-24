@@ -1,0 +1,32 @@
+    <!-- Testimonial Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">{{node.title.value}}</h1>
+                    {{node.body.value|raw}}
+                </div>
+                <div class="row g-4">
+                {% for var in node.field_testimonials %}
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="classes-item">
+                        <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle flex-shrink-0" src="{{file_url(var.entity.field_client_image.entity.fileuri)}}" alt="" style="width: 45px; height: 45px;">
+                                    <div class="ms-3">
+                                        <h6 class="text-primary mb-1">{{var.entity.field_client_name.value}}</h6>
+                                        <p>{{var.entity.field_text.value}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+

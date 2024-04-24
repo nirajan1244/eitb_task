@@ -1,0 +1,24 @@
+# Main theme library.
+global:
+  js:
+    lib/easing.js: {}
+    lib/easing.min.js: {}
+    lib/owlcarousel/owl.carousel.js: {}
+    lib/owlcarousel/owl.carousel.min.js: {}
+    js/main.js: {}
+  css:
+    theme:
+      lib/animate/animate.css: {}
+      lib/animate/animate.min.css: {}
+      lib/owlcarousel/assets/owl.carousel.css: {}
+      lib/owlcarousel/assets/owl.carousel.min.css: {}   
+      lib/owlcarousel/assets/owl.theme.default.css: {}
+      lib/owlcarousel/assets/owl.theme.default.min.css: {}
+      lib/owlcarousel/assets/owl.theme.green.css: {}
+      lib/owlcarousel/assets/owl.theme.green.min.css: {}
+      css/bootstrap.min.css: {}
+      css/main.css: {}
+      'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css': { type : external }
+  dependencies:
+    - drupal/jquery         
+

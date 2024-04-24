@@ -1,0 +1,21 @@
+name: pre_school_theme
+type: theme
+base theme: stark
+description: main theme for website.
+package: Custom
+core_version_requirement: ^10
+libraries:
+  - pre_school_theme/global
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  featured: 'Featured'
+  breadcrumb: 'Breadcrumb'
+  home_page_content: 'Home Page Content'  
+  content: 'Content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
